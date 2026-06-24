@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EstudosMatematica.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
