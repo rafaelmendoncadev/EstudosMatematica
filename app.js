@@ -31,43 +31,12 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // #region agent log
-  const errData = {
-    hypothesisId: 'A-D-E',
-    message: err.message,
-    code: err.code,
-    path: req.path,
-    url: req.url,
-    views: app.get('views')
-  };
-  console.error('[DEBUG-64e654] error', JSON.stringify(errData));
-  fetch('http://127.0.0.1:7547/ingest/e57c4033-b143-45f8-8da6-1263b2ad858c', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '64e654' },
-    body: JSON.stringify({
-      sessionId: '64e654',
-      hypothesisId: 'A-D-E',
-      location: 'app.js:errorHandler',
-      message: 'Express error caught',
-      data: errData,
-      timestamp: Date.now(),
-      runId: 'pre-fix'
-    })
-  }).catch(() => {});
-  // #endregion
-
+  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
   res.status(err.status || 500);
-  if (process.env.VERCEL === '1') {
-    return res.json({
-      debug: true,
-      error: err.message,
-      code: err.code,
-      path: req.path
-    });
-  }
   res.render('error');
 });
 
