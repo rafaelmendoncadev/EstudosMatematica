@@ -1,0 +1,290 @@
+extends layout
+
+block content
+  main(class='max-w-container-max mx-auto px-4 md:px-margin-desktop py-stack-md md:py-stack-lg flex flex-col gap-stack-lg md:gap-[64px]')
+
+    section.section-anchor(id='teoria')
+      .mb-stack-lg
+        h2(class='text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-primary mb-stack-sm') Fundamentos da Probabilidade
+        p(class='text-body-md md:text-body-lg font-body-md md:font-body-lg text-on-surface-variant') Experimento aleatório, espaço amostral, evento e cálculo de probabilidade — com exemplos do quadro.
+
+      .grid(class='grid-cols-1 md:grid-cols-2 gap-stack-md md:gap-gutter')
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          .flex.items-center.gap-stack-sm.mb-stack-md
+            span.material-symbols-outlined.text-primary(class='text-[28px]') science
+            h3.text-headline-md.font-headline-md.text-on-surface Experimento Aleatório
+          p.text-body-md.font-body-md.text-on-surface-variant
+            | Chamamos experimento aleatório todo experimento (ou fenômeno) cujo resultado depende somente do acaso, ou seja, cujo resultado é imprevisível.
+          p.text-body-md.font-body-md.text-on-surface-variant.mt-stack-sm
+            strong Exemplos:
+            |  lançamento de uma moeda; sorteio ao acaso de um algarismo de 0 a 9.
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          .flex.items-center.gap-stack-sm.mb-stack-md
+            span.material-symbols-outlined.text-primary(class='text-[28px]') scatter_plot
+            h3.text-headline-md.font-headline-md.text-on-surface Espaço Amostral (Ω)
+          p.text-body-md.font-body-md.text-on-surface-variant
+            | Chamamos espaço amostral, e geralmente indicamos por Ω (ômega), o conjunto de todos os possíveis resultados de um experimento aleatório.
+          .bg-surface-container-low.p-stack-md.rounded-lg.mt-stack-md.text-body-md.math-scroll
+            p
+              strong Ex. moeda:
+              |  \( \Omega = \{\text{cara, coroa}\} \)
+            p.mt-2
+              strong Ex. algarismos 0 a 9:
+              |  \( \Omega = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\} \), com \( n(\Omega) = 10 \)
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          .flex.items-center.gap-stack-sm.mb-stack-md
+            span.material-symbols-outlined.text-primary(class='text-[28px]') filter_center_focus
+            h3.text-headline-md.font-headline-md.text-on-surface Eventos
+          p.text-body-md.font-body-md.text-on-surface-variant
+            | Chamamos os eventos ou acontecimentos, indicando com uma letra maiúscula, cada subconjunto do espaço amostral de um experimento aleatório.
+          .bg-surface-container-low.p-stack-md.rounded-lg.mt-stack-md.text-body-md.math-scroll
+            p
+              strong Evento A
+              |  = números pares \( \Rightarrow A = \{0, 2, 4, 6, 8\} \), \( n(A) = 5 \)
+            p.mt-2
+              strong Evento B
+              |  = números maiores que 9 \( \Rightarrow B = \emptyset \), \( n(B) = 0 \)
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          .flex.items-center.gap-stack-sm.mb-stack-md
+            span.material-symbols-outlined.text-primary(class='text-[28px]') all_inclusive
+            h3.text-headline-md.font-headline-md.text-on-surface Espaços Finitos e Infinitos
+          p.text-body-md.font-body-md.text-on-surface-variant
+            | Espaços amostrais
+            strong  finitos
+            |  são aqueles que possuem um número fixo de elementos (ex.: faces de um dado → 6 resultados).
+          p.text-body-md.font-body-md.text-on-surface-variant.mt-stack-sm
+            | Espaços amostrais
+            strong  infinitos
+            |  são aqueles que não são finitos (ex.: tempo de espera até o próximo ônibus).
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant md:col-span-2')
+          .flex.items-center.gap-stack-sm.mb-stack-md
+            span.material-symbols-outlined.text-primary(class='text-[28px]') calculate
+            h3.text-headline-md.font-headline-md.text-on-surface Calculando Probabilidade
+          p.text-body-md.font-body-md.text-on-surface-variant.mb-stack-md
+            | Considere um evento A de um espaço amostral Ω finito e equiprovável. A razão entre o número de elementos de A e o número de elementos de Ω é a probabilidade \( P(A) \):
+          .bg-surface-container-low.p-stack-md.rounded-lg.text-center.math-scroll.mb-stack-md
+            | \[ P(A) = \frac{n(A)}{n(\Omega)} = \frac{\text{número de casos favoráveis}}{\text{número de casos possíveis}} \]
+          div(class='mt-stack-md p-stack-md border border-dashed border-tertiary rounded-lg bg-tertiary-fixed/20')
+            h4.text-label-md.font-label-md.font-bold.text-tertiary.mb-stack-sm.flex.items-center.gap-2
+              span.material-symbols-outlined(class='text-[18px]') lightbulb
+              | Exemplo da Urna (10 bolinhas numeradas)
+            p.text-body-md.text-on-surface-variant.mb-stack-sm
+              | Uma urna contém: 1 bola com o número 1, 2 bolas com o 2, 3 bolas com o 3 e 4 bolas com o 4. Total: \( n(\Omega) = 10 \).
+            .flex.gap-2.justify-center.mb-stack-sm.flex-wrap
+              .w-8.h-8.rounded-full.bg-primary-container.text-on-primary.flex.items-center.justify-center.text-label-sm.font-bold 1
+              .w-8.h-8.rounded-full.bg-secondary.text-on-secondary.flex.items-center.justify-center.text-label-sm.font-bold 2
+              .w-8.h-8.rounded-full.bg-secondary.text-on-secondary.flex.items-center.justify-center.text-label-sm.font-bold 2
+              .w-8.h-8.rounded-full.bg-tertiary-container.text-on-tertiary.flex.items-center.justify-center.text-label-sm.font-bold 3
+              .w-8.h-8.rounded-full.bg-tertiary-container.text-on-tertiary.flex.items-center.justify-center.text-label-sm.font-bold 3
+              .w-8.h-8.rounded-full.bg-tertiary-container.text-on-tertiary.flex.items-center.justify-center.text-label-sm.font-bold 3
+              .w-8.h-8.rounded-full.bg-error.text-on-error.flex.items-center.justify-center.text-label-sm.font-bold 4
+              .w-8.h-8.rounded-full.bg-error.text-on-error.flex.items-center.justify-center.text-label-sm.font-bold 4
+              .w-8.h-8.rounded-full.bg-error.text-on-error.flex.items-center.justify-center.text-label-sm.font-bold 4
+              .w-8.h-8.rounded-full.bg-error.text-on-error.flex.items-center.justify-center.text-label-sm.font-bold 4
+            p.text-label-sm.font-label-sm.text-on-surface-variant
+              | Qual a probabilidade de: a) tirar o número 1; b) tirar o número 3; c) tirar o número 2 ou 4?
+              em  (Resoluções na seção Exercícios do Quadro, após desbloquear o simulado.)
+
+    section.section-anchor(id='questoes')
+      .mb-stack-lg.border-b.border-surface-variant.pb-stack-sm
+        h2(class='text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-primary') Questões Resolvidas
+        p(class='text-body-md md:text-body-lg font-body-md md:font-body-lg text-on-surface-variant mt-2') Cinco exercícios comentados passo a passo.
+
+      .flex.flex-col.gap-stack-md
+        details.details-expand.group.bg-surface-container-lowest.rounded-xl.shadow-sm.border.border-surface-variant.overflow-hidden
+          summary(class='flex justify-between items-start sm:items-center gap-stack-sm p-stack-md cursor-pointer hover:bg-surface-container-low transition-colors list-none')
+            div
+              h3.text-body-lg.font-body-lg.font-semibold.text-on-surface Questão 1: Lançamento de um dado
+              p.text-body-md.font-body-md.text-on-surface-variant.mt-1 Qual a probabilidade de sair número par? E maior que 4?
+            span.material-symbols-outlined.text-outline(class='group-open:rotate-180 transition-transform duration-300') expand_more
+          div(class='p-stack-md md:p-stack-lg bg-surface border-t border-surface-variant math-scroll')
+            .text-on-surface-variant.text-body-md.font-body-md
+              p
+                strong Espaço amostral:
+                |  \( \Omega = \{1,2,3,4,5,6\} \), \( n(\Omega) = 6 \).
+              p.mt-stack-sm
+                strong P(par):
+                |  \( A = \{2,4,6\} \), \( n(A)=3 \). \( P = \frac{3}{6} = \frac{1}{2} = 50\% \).
+              p.mt-stack-sm
+                strong Comentário:
+                |  Metade dos resultados do dado é par.
+              p.mt-stack-sm
+                strong P(maior que 4):
+                |  \( B = \{5,6\} \), \( n(B)=2 \). \( P = \frac{2}{6} = \frac{1}{3} \approx 33{,}3\% \).
+
+        details.details-expand.group.bg-surface-container-lowest.rounded-xl.shadow-sm.border.border-surface-variant.overflow-hidden
+          summary(class='flex justify-between items-start sm:items-center gap-stack-sm p-stack-md cursor-pointer hover:bg-surface-container-low transition-colors list-none')
+            div
+              h3.text-body-lg.font-body-lg.font-semibold.text-on-surface Questão 2: Baralho de 52 cartas
+              p.text-body-md.font-body-md.text-on-surface-variant.mt-1 Probabilidade de tirar um ás ou uma figura (valete, dama, rei)?
+            span.material-symbols-outlined.text-outline(class='group-open:rotate-180 transition-transform duration-300') expand_more
+          div(class='p-stack-md md:p-stack-lg bg-surface border-t border-surface-variant math-scroll')
+            .text-on-surface-variant.text-body-md.font-body-md
+              p
+                strong P(ás):
+                |  4 ases em 52 cartas → \( \frac{4}{52} = \frac{1}{13} \).
+              p.mt-stack-sm
+                strong P(figura):
+                |  3 figuras × 4 naipes = 12 cartas → \( \frac{12}{52} = \frac{3}{13} \).
+              p.mt-stack-sm
+                strong Comentário:
+                |  Cada naipe tem exatamente 1 ás e 3 figuras; o baralho completo tem 52 resultados equiprováveis.
+
+        details.details-expand.group.bg-surface-container-lowest.rounded-xl.shadow-sm.border.border-surface-variant.overflow-hidden
+          summary(class='flex justify-between items-start sm:items-center gap-stack-sm p-stack-md cursor-pointer hover:bg-surface-container-low transition-colors list-none')
+            div
+              h3.text-body-lg.font-body-lg.font-semibold.text-on-surface Questão 3: Urna com bolas coloridas
+              p.text-body-md.font-body-md.text-on-surface-variant.mt-1 Urna com 3 vermelhas, 5 azuis e 2 verdes. P(tirar azul)?
+            span.material-symbols-outlined.text-outline(class='group-open:rotate-180 transition-transform duration-300') expand_more
+          div(class='p-stack-md md:p-stack-lg bg-surface border-t border-surface-variant math-scroll')
+            .text-on-surface-variant.text-body-md.font-body-md
+              p
+                strong Total:
+                |  \( n(\Omega) = 3 + 5 + 2 = 10 \).
+              p.mt-stack-sm
+                strong Favoráveis:
+                |  \( n(A) = 5 \) bolas azuis.
+              p.mt-stack-sm
+                | \[ P(\text{azul}) = \frac{5}{10} = \frac{1}{2} = 50\% \]
+              p.mt-stack-sm
+                strong Comentário:
+                |  Metade das bolas é azul — resultado imediato pela contagem direta.
+
+        details.details-expand.group.bg-surface-container-lowest.rounded-xl.shadow-sm.border.border-surface-variant.overflow-hidden
+          summary(class='flex justify-between items-start sm:items-center gap-stack-sm p-stack-md cursor-pointer hover:bg-surface-container-low transition-colors list-none')
+            div
+              h3.text-body-lg.font-body-lg.font-semibold.text-on-surface Questão 4: Sorteio entre alunos presentes
+              p.text-body-md.font-body-md.text-on-surface-variant.mt-1 Turma de 25 alunos; faltaram os de números 3, 7 e 19. P(sorteado ser múltiplo de 5)?
+            span.material-symbols-outlined.text-outline(class='group-open:rotate-180 transition-transform duration-300') expand_more
+          div(class='p-stack-md md:p-stack-lg bg-surface border-t border-surface-variant math-scroll')
+            .text-on-surface-variant.text-body-md.font-body-md
+              p
+                strong Presentes:
+                |  \( n(\Omega) = 25 - 3 = 22 \).
+              p.mt-stack-sm
+                strong Múltiplos de 5 de 1 a 25:
+                |  {5, 10, 15, 20, 25}. Todos os 5 estão presentes → \( n(A) = 5 \).
+              p.mt-stack-sm
+                | \[ P = \frac{5}{22} \approx 22{,}7\% \]
+              p.mt-stack-sm
+                strong Comentário:
+                |  Sempre redefina o espaço amostral considerando apenas os elementos presentes no sorteio.
+
+        details.details-expand.group.bg-surface-container-lowest.rounded-xl.shadow-sm.border.border-surface-variant.overflow-hidden
+          summary(class='flex justify-between items-start sm:items-center gap-stack-sm p-stack-md cursor-pointer hover:bg-surface-container-low transition-colors list-none')
+            div
+              h3.text-body-lg.font-body-lg.font-semibold.text-on-surface Questão 5: Permutação com algarismos {1, 2, 3}
+              p.text-body-md.font-body-md.text-on-surface-variant.mt-1 Números de 2 algarismos distintos. P(o número ser maior que 20)?
+            span.material-symbols-outlined.text-outline(class='group-open:rotate-180 transition-transform duration-300') expand_more
+          div(class='p-stack-md md:p-stack-lg bg-surface border-t border-surface-variant math-scroll')
+            .text-on-surface-variant.text-body-md.font-body-md
+              p
+                strong Espaço amostral:
+                |  \( \Omega = \{12, 13, 21, 23, 31, 32\} \), \( n(\Omega) = 6 \).
+              p.mt-stack-sm
+                strong Favoráveis (&gt; 20):
+                |  {21, 23, 31, 32} → \( n(A) = 4 \).
+              p.mt-stack-sm
+                | \[ P = \frac{4}{6} = \frac{2}{3} \approx 66{,}7\% \]
+              p.mt-stack-sm
+                strong Comentário:
+                |  Listar o espaço amostral evita erros em problemas de formação de números.
+
+    section.section-anchor(id='simulado')
+      .mb-stack-lg.border-b.border-surface-variant.pb-stack-sm
+        h2(class='text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-primary') Simulado
+        p(class='text-body-md md:text-body-lg font-body-md md:font-body-lg text-on-surface-variant mt-2') Acerte 10/10 para desbloquear o gabarito dos exercícios do quadro. Cada geração traz 10 questões diferentes.
+
+      div(class='bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm border border-surface-variant')
+        #quiz-container
+        #quiz-results.hidden.text-center.mt-stack-lg
+          h3.text-headline-md.text-primary.mb-2 Resultado Final
+          p.text-display-lg.font-bold.text-on-surface.mb-4#score-display 0/10
+          p.text-body-lg.text-on-surface-variant.mb-6#result-message
+          #quiz-corrections.hidden.text-left.mt-stack-lg
+          button(class='w-full sm:w-auto bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:bg-primary/90 transition-colors mt-4 min-h-[48px]' type='button' onclick='startQuiz()') Gerar Novo Simulado
+
+    section#exercicios.section-anchor(class='relative min-h-[320px] md:min-h-[400px]')
+      .mb-stack-lg.border-b.border-surface-variant.pb-stack-sm
+        h2(class='text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-primary') Exercícios do Quadro
+        p(class='text-body-md md:text-body-lg font-body-md md:font-body-lg text-on-surface-variant mt-2') Atividades propostas em aula — gabarito detalhado.
+
+      #locked-overlay(class='absolute inset-0 bg-surface/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center rounded-xl p-4')
+        span.material-symbols-outlined.text-tertiary.mb-4(class='text-[48px] md:text-[64px]') lock
+        h3.text-headline-md.text-on-surface.font-bold.mb-2 Conteúdo Bloqueado
+        p.text-body-md.text-on-surface-variant.text-center.max-w-md.px-4
+          | Complete o simulado com nota 10/10 para liberar as resoluções detalhadas dos exercícios do quadro.
+
+      #resolucoes-content.flex.flex-col.gap-stack-md
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          h3.text-headline-md.font-bold.text-on-surface.mb-4 Exercício 1: Sorteio na Turma
+          .text-on-surface-variant.text-body-md
+            p
+              strong Enunciado:
+              |  Na lista de chamada de uma turma, os 30 alunos são numerados de 1 a 30. Em certo dia, quando faltaram os alunos de números 11 e 26, o professor sorteou, dentre os presentes, um aluno para resolver uma tarefa na lousa. Qual é a probabilidade de o número do aluno sorteado ser:
+            ul.list-disc.pl-5.mt-4.space-y-3
+              li
+                strong a) par:
+                |  Pares de 1 a 30: 15 números. Como 26 (par) faltou, restam 14 pares presentes. \( P = \frac{14}{28} = \frac{1}{2} \)
+              li
+                strong b) menor do que 9:
+                |  {1, 2, 3, 4, 5, 6, 7, 8} — todos presentes. \( P = \frac{8}{28} = \frac{2}{7} \)
+              li
+                strong c) múltiplo de 4:
+                |  {4, 8, 12, 16, 20, 24, 28} → 7 presentes. \( P = \frac{7}{28} = \frac{1}{4} \)
+              li
+                strong d) primo:
+                |  Primos de 1 a 30: {2, 3, 5, 7, 11, 13, 17, 19, 23, 29}. Com 11 ausente: 9 presentes. \( P = \frac{9}{28} \)
+              li
+                strong e) maior do que 12 e menor do que 25:
+                |  {13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24} → 12 presentes. \( P = \frac{12}{28} = \frac{3}{7} \)
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          h3.text-headline-md.font-bold.text-on-surface.mb-4 Exercício 2: Números com algarismos {6, 7, 8}
+          .text-on-surface-variant.text-body-md
+            p
+              strong Enunciado:
+              |  Considere todos os números de 3 algarismos distintos formados a partir dos algarismos 6, 7 e 8. Se escolhermos um desses números ao acaso, qual é a probabilidade de ele ser:
+            p.mt-4
+              strong Espaço amostral:
+              |  \( \Omega = \{678, 687, 768, 786, 867, 876\} \), \( n(\Omega) = 6 \).
+            ul.list-disc.pl-5.mt-4.space-y-3
+              li
+                strong a) ímpar:
+                |  Terminam em 7: {687, 867}. \( P = \frac{2}{6} = \frac{1}{3} \)
+              li
+                strong b) par:
+                |  Terminam em 6 ou 8: {678, 768, 786, 876}. \( P = \frac{4}{6} = \frac{2}{3} \)
+              li
+                strong c) múltiplo de 3:
+                |  Soma dos algarismos: 6+7+8=21 (divisível por 3). Todos os 6 números são múltiplos de 3. \( P = \frac{6}{6} = 1 \)
+              li
+                strong d) maior que 770:
+                |  {786, 867, 876}. \( P = \frac{3}{6} = \frac{1}{2} \)
+              li
+                strong e) múltiplo de 5:
+                |  Nenhum termina em 0 ou 5. \( P = \frac{0}{6} = 0 \)
+
+        div(class='study-card bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-sm hover:shadow-[0_4px_12px_rgba(37,99,235,0.1)] transition-shadow duration-300 border border-surface-variant')
+          h3.text-headline-md.font-bold.text-on-surface.mb-4 Exercício 3: Bolinhas na Urna
+          .text-on-surface-variant.text-body-md
+            p
+              strong Enunciado:
+              |  Em um jogo, são depositadas em uma urna bolinhas numeradas: 1 com "1", 2 com "2", 3 com "3" e 4 com "4". Qual a probabilidade de:
+            p.mt-4
+              strong Total:
+              |  \( n(\Omega) = 10 \).
+            ul.list-disc.pl-5.mt-4.space-y-3
+              li
+                strong a) tirar o número 1:
+                |  \( P = \frac{1}{10} = 0{,}1 = 10\% \)
+              li
+                strong b) tirar o número 3:
+                |  \( P = \frac{3}{10} = 0{,}3 = 30\% \)
+              li
+                strong c) tirar o número 2 ou 4:
+                |  \( n(A) = 2 + 4 = 6 \). \( P = \frac{6}{10} = \frac{3}{5} = 60\% \)
