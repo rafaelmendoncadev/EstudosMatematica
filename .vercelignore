@@ -2,3 +2,6 @@
 *.esproj
 *.slnx
 CHANGELOG.md
+.env
+.env.local
+.env.*.local
